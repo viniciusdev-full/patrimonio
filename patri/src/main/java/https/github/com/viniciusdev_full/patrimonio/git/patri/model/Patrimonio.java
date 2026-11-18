@@ -15,6 +15,10 @@ import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
         private Long Id;
 
+        public Patrimonio() {
+
+        }
+
         public Long getId() {
             return Id;
         }
