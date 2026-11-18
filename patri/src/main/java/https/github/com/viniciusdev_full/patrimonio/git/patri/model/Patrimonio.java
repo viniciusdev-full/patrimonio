@@ -1,71 +1,65 @@
+
 package https.github.com.viniciusdev_full.patrimonio.git.patri.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
-
-    @Entity
-    @Table(name="tb_patrimonio")
-
-
-    public class Patrimonio {
+@Entity
+@Table(name = "tb_patrimonio")
+public class Patrimonio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        private Long Id;
+    @Column(name = "nr_patrimonio", nullable = false, length = 50)
+    private String nrPatrimonio;
 
-        public Patrimonio() {
+    @Column(name = "local", nullable = false, length = 255)
+    private String local;
 
-        }
+    @Column(name = "descricao", nullable = false, length = 255)
+    private String descricao;
 
-        public Long getId() {
-            return Id;
-        }
-
-        public void setId(Long id) {
-            Id = id;
-        }
-
-        public String getNr_patrimonio() {
-            return nr_patrimonio;
-        }
-
-        public void setNr_patrimonio(String nr_patrimonio) {
-            this.nr_patrimonio = nr_patrimonio;
-        }
-
-        public String getLocal() {
-            return Local;
-        }
-
-        public void setLocal(String local) {
-            this.Local = local;
-        }
-
-        public String getDescricao() {
-            return descricao;
-        }
-
-        public void setDescricao(String descricao) {
-            this.descricao = descricao;
-        }
-
-        @Column(name="nr_patrimonio",nullable = false, length = 50)
-
-        private String nr_patrimonio;
-
-        @Column(name= "local",nullable = false,length = 255)
-        private String Local;
-
-    @Column(name = "descricao",nullable = false,length = 255)
-        private String descricao;
-
-
-        public Patrimonio(Long id, String nr_patrimonio, String local, String descricao) {
-            Id = id;
-            this.nr_patrimonio = nr_patrimonio;
-            this.descricao = descricao;
-            Local = local;
-        }
+    public Patrimonio() {
     }
+
+    public Patrimonio(Long id, String nrPatrimonio,
+                      String local, String descricao) {
+        this.id = id;
+        this.nrPatrimonio = nrPatrimonio;
+        this.local = local;
+        this.descricao = descricao;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNrPatrimonio() {
+        return nrPatrimonio;
+    }
+
+    public void setNrPatrimonio(String nrPatrimonio) {
+        this.nrPatrimonio = nrPatrimonio;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+}

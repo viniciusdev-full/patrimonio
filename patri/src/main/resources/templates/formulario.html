@@ -1,26 +1,53 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ tagLib uri="jakarta.tags.core" prefix="c"%>
-<html>
+
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title> Formulario de patrimonio</title>
+    <meta charset="UTF-8">
+    <title>Formulário de Patrimônio</title>
 </head>
+
 <body>
 
-<h2> cadastro / edição de patrimonio </h2>
+<h2>CADASTRO / EDIÇÃO DE PATRIMÔNIO</h2>
 
-<form action="/patrimonios/salvar" method="post">
+<form th:action="@{/patrimonios/salvar}"
+      th:object="${patrimonio}"
+      method="post">
 
-    <label> NR PATRIMONIO </label>
-    <input type="text" id="nrpatrimonio" name="nrpatrimonio" value="${patrimonio.nrpatrimonio}" required>
-    <label> DESCRICAO </label>
-    <input type="text" id="descricao" name="descricao" value="${patrimonio.descricao}" required>
-    <label> LOCAL </label>
-    <input type="text" id="local" name="local" value="${patrimonio.local}" required>
+    <input type="hidden" th:field="*{id}">
 
-    <button type="submit" > Salvar</button>
+    <label>NR PATRIMÔNIO</label>
 
-    <a href="/patrimonio" > Cancelar </a>
+    <input type="text"
+           th:field="*{nrPatrimonio}"
+           required>
+
+    <br><br>
+
+    <label>DESCRIÇÃO</label>
+
+    <input type="text"
+           th:field="*{descricao}"
+           required>
+
+    <br><br>
+
+    <label>LOCAL</label>
+
+    <input type="text"
+           th:field="*{local}"
+           required>
+
+    <br><br>
+
+    <button type="submit">Salvar</button>
+
+    <br><br>
+
+    <a th:href="@{/patrimonios}">Cancelar</a>
 
 </form>
+
 </body>
 </html>
