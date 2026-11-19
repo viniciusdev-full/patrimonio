@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Patrimônio</title>
 </head>
 
@@ -17,33 +18,43 @@
 
     <input type="hidden" th:field="*{id}">
 
-    <label>NR PATRIMÔNIO</label>
+    <div>
+        <label for="nrPatrimonio">NR PATRIMÔNIO</label>
 
-    <input type="text"
-           th:field="*{nrPatrimonio}"
-           required>
+        <input type="text"
+               id="nrPatrimonio"
+               th:field="*{nrPatrimonio}"
+               maxlength="50"
+               required>
+    </div>
 
-    <br><br>
+    <br>
 
-    <label>DESCRIÇÃO</label>
+    <div>
+        <label for="descricao">DESCRIÇÃO</label>
 
-    <input type="text"
-           th:field="*{descricao}"
-           required>
+        <input type="text"
+               id="descricao"
+               th:field="*{descricao}"
+               maxlength="255"
+               required>
+    </div>
 
-    <br><br>
+    <br>
 
-    <label>LOCAL</label>
+    <div>
+        <label for="local">LOCAL</label>
 
-    <input type="text"
-           th:field="*{local}"
-           required>
+        <input type="text"
+               id="local"
+               th:field="*{local}"
+               maxlength="255"
+               required>
+    </div>
 
-    <br><br>
+    <br>
 
     <button type="submit">Salvar</button>
-
-    <br><br>
 
     <a th:href="@{/patrimonios}">Cancelar</a>
 

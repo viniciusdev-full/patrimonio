@@ -20,9 +20,11 @@ public class Patrimonio {
     @Column(name = "descricao", nullable = false, length = 255)
     private String descricao;
 
+    // Construtor vazio
     public Patrimonio() {
     }
 
+    // Construtor completo
     public Patrimonio(Long id, String nrPatrimonio,
                       String local, String descricao) {
         this.id = id;
@@ -31,6 +33,7 @@ public class Patrimonio {
         this.descricao = descricao;
     }
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }

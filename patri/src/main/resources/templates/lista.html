@@ -4,6 +4,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Lista de Patrimônio</title>
 </head>
 
@@ -11,11 +13,15 @@
 
 <h2>CONTROLE DE PATRIMÔNIO</h2>
 
-<a th:href="@{/patrimonios/novo}">
-    Cadastro novo
-</a>
+<!-- Botão para cadastrar novo patrimônio -->
+<p>
+    <a th:href="@{/patrimonios/novo}">
+        CADASTRAR NOVO PATRIMÔNIO
+    </a>
+</p>
 
-<table border="1">
+<!-- Tabela de patrimônios -->
+<table border="1" cellpadding="8" cellspacing="0">
 
     <thead>
     <tr>
@@ -29,24 +35,41 @@
 
     <tbody>
 
+    <!-- Percorrer a lista de patrimônios -->
     <tr th:each="item : ${listarPatrimonios}">
 
         <td th:text="${item.id}"></td>
-        <td th:text="${item.nrpatrimonio}"></td>
+
+        <td th:text="${item.nrPatrimonio}"></td>
+
         <td th:text="${item.descricao}"></td>
+
         <td th:text="${item.local}"></td>
 
         <td>
 
+            <!-- Editar patrimônio -->
             <a th:href="@{/patrimonios/editar/{id}(id=${item.id})}">
-                Editar
+                EDITAR
             </a>
 
+            |
+
+            <!-- Excluir patrimônio -->
             <a th:href="@{/patrimonios/excluir/{id}(id=${item.id})}"
-               onclick="return confirm('Deseja excluir este patrimônio?')">
-                Excluir
+               onclick="return confirm('Deseja realmente excluir este patrimônio?')">
+                EXCLUIR
             </a>
 
+        </td>
+
+    </tr>
+
+    <!-- Mensagem quando não houver registros -->
+    <tr th:if="${#lists.isEmpty(listarPatrimonios)}">
+
+        <td colspan="5">
+            Nenhum patrimônio cadastrado.
         </td>
 
     </tr>
