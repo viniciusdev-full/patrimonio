@@ -4,7 +4,6 @@ package https.github.com.viniciusdev_full.patrimonio.git.patri.controller;
 import https.github.com.viniciusdev_full.patrimonio.git.patri.Service.PatrimonioService;
 import https.github.com.viniciusdev_full.patrimonio.git.patri.model.Patrimonio;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,30 +12,35 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/patrimonios")
 public class PatrimonioController {
 
-    @Autowired
-    private PatrimonioService service;
+    private final PatrimonioService service;
 
-    // Listar todos os patrimônios
+    public PatrimonioController(PatrimonioService service) {
+        this.service = service;
+    }
+
+    // Listar patrimônios
     @GetMapping
     public String lista(Model model) {
+
         model.addAttribute("listarPatrimonios",
                 service.listarTodos());
 
         return "lista";
     }
 
-    // Formulário para novo patrimônio
+    // Novo patrimônio
     @GetMapping("/novo")
     public String novo(Model model) {
+
         model.addAttribute("patrimonio", new Patrimonio());
 
         return "formulario";
     }
 
-    // Formulário para editar patrimônio
+    // Editar patrimônio
     @GetMapping("/editar/{id}")
     public String editarFormulario(
-            @PathVariable("id") Long id,
+            @PathVariable Long id,
             Model model) {
 
         return service.buscarPorId(id)
@@ -47,21 +51,21 @@ public class PatrimonioController {
                 .orElse("redirect:/patrimonios");
     }
 
-    // Salvar ou atualizar patrimônio
+    // Salvar patrimônio
     @PostMapping("/salvar")
     public String salvar(
             @ModelAttribute("patrimonio") Patrimonio patrimonio) {
 
-        service.Salvar(patrimonio);
+        service.salvar(patrimonio);
 
         return "redirect:/patrimonios";
     }
 
     // Excluir patrimônio
     @GetMapping("/excluir/{id}")
-    public String excluir(@PathVariable("id") Long id) {
+    public String excluir(@PathVariable Long id) {
 
-        service.Deletar(id);
+        service.deletar(id);
 
         return "redirect:/patrimonios";
     }
