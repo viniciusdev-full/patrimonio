@@ -1,5 +1,6 @@
 package https.github.com.viniciusdev_full.patrimonio.git.patri;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
